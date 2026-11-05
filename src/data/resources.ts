@@ -62,10 +62,18 @@ export const RESOURCES: Resource[] = [
   },
   {
     name: 'National Dangerous Drugs Control Board',
-    description: 'The government body for drug control. It provides counselling and residential treatment at centres in Talangama, Nawadiganthaya (Nittambuwa), Galle and Kandy, with contact details on its website.',
+    description: 'The government body for drug control. It provides counselling and residential treatment at its own centres, including Talangama, Nawadiganthaya (Nittambuwa), Galle and Kandy.',
     href: 'https://nddcb.gov.lk/', linkLabel: 'Visit the NDDCB website',
     region: 'lk', where: 'Colombo, Gampaha, Galle and Kandy districts', topics: ['substance', 'professional'],
     checkedVia: 'NDDCB website',
+  },
+  {
+    name: 'NDDCB 1927 helpline',
+    description: 'A telephone counselling service for people who use drugs and their families, with basic information and referrals to treatment.',
+    href: 'https://www.nddcb.gov.lk/helpline.php', linkLabel: 'Visit the 1927 helpline page',
+    region: 'lk', where: 'Sri Lanka', topics: ['substance', 'emotional'],
+    phones: [{ label: '1927', tel: '1927', note: 'Hours not listed' }],
+    checkedVia: 'NDDCB website and NDDCB Annual Report 2023',
   },
   {
     name: 'NDDCB list of private and designated treatment centres',
@@ -152,17 +160,3 @@ export const RESOURCES: Resource[] = [
     checkedVia: 'UNODC website',
   },
 ];
-
-/** Figures quoted exactly from the sources. Do not edit without re-checking the source. */
-export const NDDCB_2025 = {
-  total: 6030,
-  source: 'National Dangerous Drugs Control Board, Annual Statistical Report on Treatment Admissions for Drug Use Disorders: Sri Lanka, 2025',
-  href: 'https://www.nddcb.gov.lk/Docs/research/Annual_Statistical_Report_on_Treatment_Admissions_for_Drug_Use_Disorders.pdf',
-  rows: [
-    { provider: 'Private treatment services', count: 2520, pct: 41.8 },
-    { provider: 'NDDCB outreach services', count: 1409, pct: 23.4 },
-    { provider: 'BR treatment services', count: 1299, pct: 21.5 },
-    { provider: 'NDDCB treatment centres', count: 760, pct: 12.6 },
-    { provider: 'Other providers', count: 42, pct: 0.7 },
-  ],
-};

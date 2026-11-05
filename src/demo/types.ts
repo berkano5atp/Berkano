@@ -12,12 +12,12 @@ export const MOODS = [
 ];
 
 export const SCREENS: { id: DemoScreen; label: string; tip: string }[] = [
-  { id: 'home', label: 'Home', tip: 'Tap Safe Mode, or use the bottom navigation to move around.' },
-  { id: 'safe', label: 'Safe Mode', tip: 'Tap the numbers in order, open Grounding exercises, then close with the X.' },
-  { id: 'journal', label: 'Trigger journal', tip: 'Choose a mood, write something fictional and save it. Your entry appears in Insights.' },
-  { id: 'insights', label: 'Insights', tip: 'Switch between week, month and all time, then review the example entries.' },
-  { id: 'support', label: 'Support & help', tip: 'Open a row to see what each part of the Professional Hub is for.' },
-  { id: 'me', label: 'Me', tip: 'Open a row. Try a text size in Display & accessibility.' },
+  { id: 'home', label: 'Home', tip: 'Tap Safe Mode, or explore with the bottom tabs.' },
+  { id: 'safe', label: 'Safe Mode', tip: 'Tap 1 to 9, try Grounding exercises, then close with the X.' },
+  { id: 'journal', label: 'Trigger journal', tip: 'Pick a mood and save a made-up entry. It appears in Insights.' },
+  { id: 'insights', label: 'Insights', tip: 'Switch the time range, then review the example entries.' },
+  { id: 'support', label: 'Support & help', tip: 'Open a row to explore the Professional Hub.' },
+  { id: 'me', label: 'Me', tip: 'Open a row, or change the text size in Display & accessibility.' },
 ];
 
 export const PERIODS: Record<Period, { tab: string; title: string; counts: { name: string; n: number }[] }> = {
