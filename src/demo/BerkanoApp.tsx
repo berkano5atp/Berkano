@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
-  Bell, BookOpen, Check, ChevronLeft, ChevronRight, HeartHandshake, Heart, Home, Play, PhoneCall, Settings, ShieldCheck,
-  ShoppingBag, Target, Type, User, Users, Wind, XCircle,
+  BatteryFull, Bell, BookOpen, Check, ChevronLeft, ChevronRight, HeartHandshake, Heart, Home, Play, PhoneCall, Settings, ShieldCheck,
+  ShoppingBag, Signal, Target, Type, User, Users, Wifi, Wind, XCircle,
 } from 'lucide-react';
 import symbol from '../assets/brand/berkano-symbol.png';
 import { Link } from '../lib/router';
@@ -420,6 +420,8 @@ function Me({ s }: { s: DemoState }) {
   );
 }
 
+const ORDER: DemoScreen[] = ['home', 'safe', 'journal', 'insights', 'support', 'me'];
+
 export function BerkanoApp({ state }: { state: DemoState }) {
   const s = state;
   const scroller = useRef<HTMLDivElement>(null);
@@ -436,14 +438,25 @@ export function BerkanoApp({ state }: { state: DemoState }) {
   }, [s.screen]);
 
   const base = s.screen === 'safe' ? 'home' : s.screen;
+  // Pages slide in from the direction you are travelling.
+  const prev = useRef(base);
+  const dir = ORDER.indexOf(base) < ORDER.indexOf(prev.current) ? 'back' : 'forward';
+  useEffect(() => { prev.current = base; }, [base]);
+
   return (
-    <div ref={root} className="bk" style={{ '--s': s.textScale } as React.CSSProperties}>
+    <div ref={root} className="bk" style={{ '--s': s.textScale * 1.07 } as React.CSSProperties}>
+      <div className="bk-status" aria-hidden="true">
+        <span>12:13</span>
+        <span><Signal size={15} /><Wifi size={15} /><BatteryFull size={18} /></span>
+      </div>
       <div className="bk-scroll" ref={scroller} tabIndex={-1} {...(s.screen === 'safe' ? { inert: '' } : {})}>
-        {base === 'home' && <HomeScreen s={s} />}
-        {base === 'journal' && <Journal s={s} />}
-        {base === 'insights' && <Insights s={s} />}
-        {base === 'support' && <Support s={s} />}
-        {base === 'me' && <Me s={s} />}
+        <div className="bk-page" key={`${base}-${s.sub ?? ''}`} data-dir={s.sub ? 'forward' : dir}>
+          {base === 'home' && <HomeScreen s={s} />}
+          {base === 'journal' && <Journal s={s} />}
+          {base === 'insights' && <Insights s={s} />}
+          {base === 'support' && <Support s={s} />}
+          {base === 'me' && <Me s={s} />}
+        </div>
       </div>
       <div {...(s.screen === 'safe' ? { inert: '' } : {})}><Nav s={s} /></div>
       {s.screen === 'safe' && <SafeMode s={s} />}

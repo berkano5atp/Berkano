@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check, Copy, Mail, Menu, X } from 'lucide-react';
 import { CONTACT_EMAIL, MAILTO, SOCIAL_LINKS } from '../data/site';
 import { Link, useRouter } from '../lib/router';
@@ -7,9 +7,32 @@ import { FullLogo, Symbol, ThemeToggle } from './brand';
 const LINKS = [
   { to: '/#features', label: 'Features' },
   { to: '/#demo', label: 'Try the demo' },
+  { to: '/#numbers', label: 'Numbers' },
   { to: '/#team', label: 'Team' },
   { to: '/resources', label: 'Resources' },
 ];
+
+/** The logo sits inside a ring that grows as you scroll the page. */
+function ScrollRing() {
+  const ref = useRef<SVGCircleElement>(null);
+  useEffect(() => {
+    let raf = 0;
+    const paint = () => {
+      raf = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      ref.current?.setAttribute('stroke-dashoffset', String(1 - (max > 0 ? Math.min(1, window.scrollY / max) : 0)));
+    };
+    const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
+    paint();
+    window.addEventListener('scroll', queue, { passive: true });
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('scroll', queue); };
+  }, []);
+  return (
+    <svg viewBox="0 0 54 54" className="pointer-events-none absolute -inset-1" aria-hidden="true">
+      <circle ref={ref} cx="27" cy="27" r="25.5" fill="none" stroke="var(--ring-active)" strokeWidth="2" pathLength={1} strokeDasharray="1" strokeDashoffset="1" strokeLinecap="round" transform="rotate(-90 27 27)" />
+    </svg>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -18,16 +41,16 @@ export function Header() {
   return (
     <header className="sticky z-40 border-b border-line bg-paper/95 backdrop-blur" style={{ top: 'env(safe-area-inset-top, 0px)' }}>
       <div className="wrap flex h-[72px] items-center justify-between gap-3">
-        <Link to="/" className="flex items-center gap-3" aria-label="Berkano home">
-          <Symbol size={46} />
-          <span className="font-display text-xl tracking-[0.08em]">BERKANO</span>
+        <Link to="/" className="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Berkano home">
+          <span className="relative inline-grid"><Symbol size={46} /><ScrollRing /></span>
+          <span className="font-display text-[1.05rem] tracking-[0.06em] sm:text-xl sm:tracking-[0.08em]">BERKANO</span>
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
           {LINKS.map((l) => (
-            <Link key={l.to} to={l.to} aria-current={l.to === '/resources' && page === 'resources' ? 'page' : undefined} className="font-medium underline-offset-4 hover:underline aria-[current=page]:underline">{l.label}</Link>
+            <Link key={l.to} to={l.to} aria-current={l.to === '/resources' && page === 'resources' ? 'page' : undefined} className="navlink">{l.label}</Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <ThemeToggle />
           <Link to="/#join" className="btn btn-solid hidden !min-h-11 !py-2 lg:inline-flex">Join the interest list</Link>
           <button
@@ -66,20 +89,20 @@ export function CopyEmail({ className = '' }: { className?: string }) {
   return (
     <button type="button" onClick={copy} className={`btn btn-line ${className}`}>
       {state === 'copied' ? <Check size={18} /> : <Copy size={18} />}
-      <span aria-live="polite">{state === 'copied' ? 'Email address copied' : state === 'failed' ? 'Copy failed: select the address' : 'Copy email address'}</span>
+      <span aria-live="polite">{state === 'copied' ? 'Copied' : state === 'failed' ? 'Select the address to copy' : 'Copy address'}</span>
     </button>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="border-t border-line">
+    <footer className="bg-paper-2">
       <div className="wrap grid gap-10 py-14 md:grid-cols-[auto_1fr_auto]">
-        <FullLogo className="h-44 self-start" />
+        <FullLogo className="h-44 w-fit self-start" />
         <div className="prose-w min-w-0">
-          <p className="font-display text-2xl leading-tight">A proposed recovery self-management app, in development as a university team project.</p>
-          <p className="mt-4 text-[0.95rem] text-ink-2">
-            Berkano is non-clinical. It does not diagnose conditions, provide medical treatment, replace professional care or guarantee recovery outcomes. It is not an emergency service. If you need help now, please see the{' '}
+          <p className="font-display text-[1.7rem] leading-tight">A proposed recovery self-management app, in development as a university team project.</p>
+          <p className="mt-3 text-[1rem] text-ink-2">
+            Non-clinical. Does not diagnose, treat, replace professional care or guarantee recovery. Not an emergency service. Need help now? See the{' '}
             <Link to="/resources" className="tlink">support resources</Link>.
           </p>
         </div>
@@ -90,7 +113,7 @@ export function Footer() {
           {SOCIAL_LINKS.map((s) => <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className="tlink">{s.label}</a>)}
         </div>
       </div>
-      <p className="wrap pb-8 text-sm text-ink-2">© 2026 The Berkano team. Developed for the IIT Agile Team Project.</p>
+      <p className="wrap pb-8 text-[0.95rem] text-ink-2">© 2026 The Berkano team. Developed for the IIT Agile Team Project.</p>
     </footer>
   );
 }

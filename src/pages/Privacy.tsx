@@ -13,7 +13,7 @@ export function Privacy() {
   return (
     <section className="wrap py-14 md:py-20" aria-labelledby="privacy-title">
       <h1 id="privacy-title" className="text-[clamp(3rem,7vw,5.5rem)]">Privacy notice</h1>
-      <p className="prose-w mt-6 text-xl text-ink-2">Recovery is personal, so this site collects as little as possible. Last updated 4 November 2026.</p>
+      <p className="prose-w mt-6 text-xl text-ink-2">This site collects as little as possible. Last updated 4 November 2026.</p>
       <div className="mt-12 grid max-w-3xl gap-9">
         {SECTIONS.map(([h, t]) => (
           <div key={h} className="border-t border-line pt-5">

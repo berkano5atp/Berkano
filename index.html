@@ -22,6 +22,7 @@
     <script>
       // Apply a saved theme before first paint. With no saved choice the device setting applies through CSS.
       try { var t = localStorage.getItem('berkano-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
     </script>
   </head>
   <body>

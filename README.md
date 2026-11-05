@@ -43,7 +43,8 @@ These steps use Cloudflare Pages. Netlify and Vercel work almost the same way.
 | --- | --- |
 | Team photographs | Add square images to `public/team/`, then set `photo` in `src/data/team.ts` |
 | Social media links | Add real accounts to `SOCIAL_LINKS` in `src/data/site.ts`. The footer shows them only when the list has entries |
-| Support resources and statistics | `src/data/resources.ts` |
+| Support resources | `src/data/resources.ts` |
+| Statistics, with their sources | `src/data/stats.ts` |
 | Feature wording | `src/data/features.ts` |
 | Colours | The token blocks at the top of `src/styles/index.css` and `src/styles/app.css` |
 | Demo screens and sample data | `src/demo/` |
@@ -79,7 +80,7 @@ The call to action opens the visitor's email app with a prepared message to `ber
 - [ ] Add real team photographs.
 - [ ] Set `VITE_SITE_URL`, deploy, and confirm HTTPS on your own domain.
 - [ ] Send a real test email through each email button, and confirm it arrives.
-- [ ] Re-check every link and number in `src/data/resources.ts`.
+- [ ] Re-check every link and number in `src/data/resources.ts` and `src/data/stats.ts`.
 - [ ] Have the team confirm the privacy notice describes what you actually do with emails.
 - [ ] Test on real Android and iOS phones, a tablet and desktop browsers.
 - [ ] Test with a screen reader, and run Lighthouse on the live site.

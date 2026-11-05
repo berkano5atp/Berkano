@@ -15,6 +15,9 @@ function Current() {
   return <Home />;
 }
 
+// The Artifact page shell has no lang attribute of its own.
+document.documentElement.lang = 'en';
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <RouterProvider>

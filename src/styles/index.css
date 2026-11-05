@@ -2,58 +2,74 @@
 @import './fonts.css';
 @import './app.css';
 
-/* Layout concept: growth rings cut through the page; type stays left-weighted and quiet around them.
-   Light uses the approved light palette, dark uses the approved dark palette. Tokens are the only source of colour. */
+/* Two scenes from one brand.
+   Light is a birch grove in the morning: airy cream, sand and teal, soft warm shadows.
+   Dark is the same grove at night: deep night teal, moonlit cream trunks and muted gold light. */
 :root {
-  --paper: #fff2d8;
-  --raised: #fff9ec;
-  --beige: #ebd6ba;
-  --sand: #bda583;
-  --ink: #093744;
-  --ink-2: #3b5c64;
-  --line: rgb(9 55 68 / 0.2);
-  --btn: #093744;
-  --btn-fg: #fff2d8;
-  --btn-hover: #0f4c5d;
-  --ring: #cdb693;
-  --ring-hard: #8f7450;
-  --ring-active: #093744;
-  --band: #093744;
-  --band-fg: #fff2d8;
-  --band-2: #d9c6a6;
-  --band-line: rgb(255 242 216 / 0.24);
-  --plate: #fff2d8;
-  --bar-track: #ebd6ba;
-  --bar: #093744;
-  --focus: #093744;
-  --sun: 0.75;
+  --paper: #fff9ec; --paper-2: #fff2d8; --raised: #fffdf7; --beige: #ebd6ba; --sand: #bda583;
+  --ink: #093744; --ink-2: #2f525c; --accent: #7a5c33; --line: rgb(9 55 68 / 0.16);
+  --btn: #093744; --btn-fg: #fff9ec; --btn-hover: #0f4c5d; --focus: #093744;
+  --chip: #fff2d8; --chip-on: #093744; --chip-on-fg: #fff9ec;
+  --ring: #d8c3a0; --ring-hard: #9c7f55; --ring-active: #093744; --ring-track: #efe0c4;
+  --band: #093744; --band-fg: #fff2d8; --band-2: #e2cfaf; --band-line: rgb(255 242 216 / 0.26);
+  --plate: #fff2d8; --bar-track: #ebd6ba; --bar: #093744; --num: #093744;
+  --shadow: 0 24px 60px -30px rgb(122 92 51 / 0.45);
+  --sky-1: #fffdf6; --sky-2: #fff2d8; --sky-3: #f9e4c2;
+  --sun-o: 1; --moon-o: 0; --sun-y: 0px; --moon-y: 90px; --glow: rgb(255 214 150 / 0.75);
+  --hill-1: #f3e2c6; --hill-2: #ebd6ba; --hill-3: #dcc4a0;
+  --trunk-b: #efe0c6; --trunk-m: #fff6e3; --trunk-f: #fffdf6; --trunk-line: rgb(9 55 68 / 0.28);
+  --mark: #093744; --mark-b: #bda583; --leaf: #8f9a6c; --leaf-2: #b6a96f; --branch: #5e6f6c;
+  --stage-1: #fff9ec; --stage-2: #f8e6c8; --stage-glow: rgb(255 219 160 / 0.65); --sec: #fff2d8;
+  --particle: 122 92 51; --tree-trunk: #fffdf6; --soil: #dcc4a0; --root: #7a5c33;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #071f27; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82; --ink: #f5e7d1; --ink-2: #c8bda9;
-    --line: rgb(245 231 209 / 0.18); --btn: #c9ad82; --btn-fg: #071f27; --btn-hover: #dcc39b;
-    --ring: #1f525b; --ring-hard: #c9ad82; --ring-active: #c9ad82;
-    --band: #0b303b; --band-fg: #f5e7d1; --band-2: #c9ad82; --band-line: rgb(245 231 209 / 0.18);
-    --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --focus: #f5e7d1;
+    --paper: #071f27; --paper-2: #05171d; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82;
+    --ink: #f5e7d1; --ink-2: #cfc5b2; --accent: #d8bd92; --line: rgb(245 231 209 / 0.17);
+    --btn: #c9ad82; --btn-fg: #05171d; --btn-hover: #dfc69f; --focus: #f5e7d1;
+    --chip: #0b303b; --chip-on: #c9ad82; --chip-on-fg: #05171d;
+    --ring: #1b4a53; --ring-hard: #c9ad82; --ring-active: #c9ad82; --ring-track: #103742;
+    --band: #0b303b; --band-fg: #f5e7d1; --band-2: #d8bd92; --band-line: rgb(245 231 209 / 0.2);
+    --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --num: #e2c79c;
+    --shadow: 0 30px 70px -30px rgb(0 0 0 / 0.8);
+    --sky-1: #030f14; --sky-2: #071f27; --sky-3: #0b303b;
+    --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(201 173 130 / 0.32);
+    --hill-1: #0b303b; --hill-2: #092833; --hill-3: #061d25;
+    --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
+    --mark: #071f27; --mark-b: #0b303b; --leaf: #3f7168; --leaf-2: #c9ad82; --branch: #7d9694;
+    --stage-1: #05171d; --stage-2: #0b303b; --stage-glow: rgb(201 173 130 / 0.2); --sec: #05171d;
+    --particle: 224 196 150; --tree-trunk: #f5e7d1; --soil: #0b303b; --root: #c9ad82;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --paper: #071f27; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82; --ink: #f5e7d1; --ink-2: #c8bda9;
-  --line: rgb(245 231 209 / 0.18); --btn: #c9ad82; --btn-fg: #071f27; --btn-hover: #dcc39b;
-  --ring: #1f525b; --ring-hard: #c9ad82; --ring-active: #c9ad82;
-  --band: #0b303b; --band-fg: #f5e7d1; --band-2: #c9ad82; --band-line: rgb(245 231 209 / 0.18);
-  --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --focus: #f5e7d1;
+  --paper: #071f27; --paper-2: #05171d; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82;
+  --ink: #f5e7d1; --ink-2: #cfc5b2; --accent: #d8bd92; --line: rgb(245 231 209 / 0.17);
+  --btn: #c9ad82; --btn-fg: #05171d; --btn-hover: #dfc69f; --focus: #f5e7d1;
+  --chip: #0b303b; --chip-on: #c9ad82; --chip-on-fg: #05171d;
+  --ring: #1b4a53; --ring-hard: #c9ad82; --ring-active: #c9ad82; --ring-track: #103742;
+  --band: #0b303b; --band-fg: #f5e7d1; --band-2: #d8bd92; --band-line: rgb(245 231 209 / 0.2);
+  --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --num: #e2c79c;
+  --shadow: 0 30px 70px -30px rgb(0 0 0 / 0.8);
+  --sky-1: #030f14; --sky-2: #071f27; --sky-3: #0b303b;
+  --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(201 173 130 / 0.32);
+  --hill-1: #0b303b; --hill-2: #092833; --hill-3: #061d25;
+  --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
+  --mark: #071f27; --mark-b: #0b303b; --leaf: #3f7168; --leaf-2: #c9ad82; --branch: #7d9694;
+  --stage-1: #05171d; --stage-2: #0b303b; --stage-glow: rgb(201 173 130 / 0.2); --sec: #05171d;
+  --particle: 224 196 150; --tree-trunk: #f5e7d1; --soil: #0b303b; --root: #c9ad82;
   color-scheme: dark;
 }
 
 @theme inline {
   --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
   --color-raised: var(--raised);
   --color-beige: var(--beige);
   --color-sand: var(--sand);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
+  --color-accent: var(--accent);
   --color-line: var(--line);
   --color-btn: var(--btn);
   --color-btn-fg: var(--btn-fg);
@@ -61,69 +77,146 @@
   --color-band-fg: var(--band-fg);
   --color-band-2: var(--band-2);
   --color-band-line: var(--band-line);
-  --color-plate: var(--plate);
+  --color-num: var(--num);
+  --color-sec: var(--sec);
   --font-display: 'Gloock', 'Playfair Display', Georgia, serif;
   --font-sans: 'Hanken Grotesk', 'Segoe UI', system-ui, sans-serif;
 }
 
-@layer base {
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-body {
+/* Deliberately outside any CSS layer, with raised specificity. The Claude Artifact page shell sets
+   body { font: 14px ...; background: #fff; color: #000 } unlayered, which would beat layered rules. */
+html:root { scroll-behavior: smooth; scroll-padding-top: 88px; }
+html body {
+  margin: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
-  line-height: 1.6;
+  line-height: 1.55;
   overflow-wrap: break-word;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.08; text-wrap: balance; }
-:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
-.on-band :focus-visible, .on-band:focus-visible { outline-color: var(--band-fg); }
 
+@layer base {
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.04; text-wrap: balance; color: inherit; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
 }
 
 @layer components {
-.wrap {
-  width: 100%;
-  max-width: 1240px;
-  margin-inline: auto;
-  padding-left: max(20px, env(safe-area-inset-left, 0px));
-  padding-right: max(20px, env(safe-area-inset-right, 0px));
-}
-@media (min-width: 768px) { .wrap { padding-left: 40px; padding-right: 40px; } }
-.prose-w { max-width: 62ch; }
+  .wrap { width: 100%; max-width: 1280px; margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  @media (min-width: 768px) { .wrap { padding-left: 40px; padding-right: 40px; } }
+  .sec { padding-block: clamp(4.5rem, 10vw, 8rem); }
+  .h-sec { font-size: clamp(2.5rem, 5.6vw, 4.75rem); }
+  .lede { font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.4; color: var(--ink-2); max-width: 44ch; }
+  .prose-w { max-width: 62ch; }
+  .band { background: var(--band); color: var(--band-fg); }
+  .on-band :focus-visible { outline-color: var(--band-fg); }
 
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  min-height: 48px; padding: 0.625rem 1.5rem; border-radius: 999px;
-  font-weight: 650; line-height: 1.2; text-align: center; cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-.btn-solid { background: var(--btn); color: var(--btn-fg); }
-.btn-solid:hover { background: var(--btn-hover); }
-.btn-line { border: 1.5px solid var(--ink); color: var(--ink); }
-.btn-line:hover { background: var(--ink); color: var(--paper); }
-.band .btn-solid { background: var(--band-fg); color: var(--band); }
-.band .btn-solid:hover { background: var(--band-2); }
-.band .btn-line { border-color: var(--band-fg); color: var(--band-fg); }
-.band .btn-line:hover { background: var(--band-fg); color: var(--band); }
-.band { background: var(--band); color: var(--band-fg); }
-.tlink { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.tlink:hover { text-decoration-thickness: 2px; }
+  .btn {
+    position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 50px; padding: 0.625rem 1.6rem; border-radius: 999px; font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+  /* A growth ring expands from each button on hover. */
+  .btn::after { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; border: 2px solid currentColor; opacity: 0; pointer-events: none; }
+  .btn:hover::after { animation: btn-ring 0.7s ease-out; }
+  .btn-solid { background: var(--btn); color: var(--btn-fg); }
+  .btn-solid:hover { background: var(--btn-hover); }
+  .btn-line { border: 2px solid var(--ink); color: var(--ink); }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+  .band .btn-solid { background: var(--band-fg); color: var(--band); }
+  .band .btn-solid:hover { background: var(--band-2); }
+  .band .btn-line { border-color: var(--band-fg); color: var(--band-fg); }
+  .band .btn-line:hover { background: var(--band-fg); color: var(--band); }
+  .tlink { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .tlink:hover { text-decoration-thickness: 2px; }
+  .chip { min-height: 44px; padding: 0.4rem 1rem; border: 1.5px solid var(--line); border-radius: 999px; background: var(--chip); color: var(--ink); font-weight: 650; font-size: 0.96rem; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed='true'] { background: var(--chip-on); border-color: var(--chip-on); color: var(--chip-on-fg); }
+  .navlink { position: relative; font-weight: 600; padding-block: 4px; }
+  .navlink::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+  .navlink:hover::after, .navlink[aria-current='page']::after { transform: scaleX(1); }
 
+  .toggle { position: relative; width: 68px; height: 38px; flex: none; border: 1.5px solid var(--line); border-radius: 999px; background: var(--chip); cursor: pointer; }
+  .toggle-knob { position: absolute; top: 3px; left: 3px; display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--btn); color: var(--btn-fg); transition: transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1); }
+  .toggle[data-dark='true'] .toggle-knob { transform: translateX(29px) rotate(360deg); }
+
+  .hero { position: relative; overflow: clip; background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 55%, var(--sky-3) 100%); }
+  .hero-layer { position: absolute; left: 0; right: 0; bottom: -2px; will-change: transform; pointer-events: none; }
+  .hero-layer svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .celestial { position: absolute; right: 11%; top: 9%; width: clamp(180px, 19vw, 300px); aspect-ratio: 1; will-change: transform; pointer-events: none; }
+  @media (max-width: 1023px) { .celestial { right: 14%; top: auto; bottom: 170px; width: 150px; }
+    .hero-layer { height: 390px !important; -webkit-mask-image: linear-gradient(transparent, #000 34%); mask-image: linear-gradient(transparent, #000 34%); }
+    .hero-layer svg { overflow: hidden; } }
+  .sun, .moon { position: absolute; inset: 0; border-radius: 50%; transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1); }
+  .sun { opacity: var(--sun-o); transform: translateY(var(--sun-y)); background: radial-gradient(circle, #fff6df 0%, #f6dcae 55%, #ebc98f 100%); box-shadow: 0 0 110px 60px var(--glow); }
+  .moon { opacity: var(--moon-o); transform: translateY(var(--moon-y)); background: radial-gradient(circle at 38% 36%, #f9eedb 0%, #f5e7d1 55%, #d9c6a6 100%); box-shadow: 0 0 120px 44px var(--glow); }
+  .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+  .reveal { transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .js-motion .reveal:not(.in) { opacity: 0.18; transform: translateY(28px); }
+
+  .story-beat { transition: opacity 0.4s ease, transform 0.4s ease; }
+  .story-dot { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; cursor: pointer; }
+  .story-dot i { display: block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); transition: transform 0.25s ease, background-color 0.25s ease; }
+  .story-dot[aria-current='step'] i { background: var(--ink); transform: scale(1.4); }
+
+  .node { position: absolute; display: grid; place-items: center; width: 54px; height: 54px; margin: -27px 0 0 -27px; border: 2px solid var(--line); border-radius: 50%; background: var(--raised); color: var(--ink); cursor: pointer; box-shadow: var(--shadow); transition: transform 0.3s cubic-bezier(0.3, 1.4, 0.5, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+  .node:hover { transform: scale(1.12); border-color: var(--ink); }
+  .node[aria-pressed='true'] { background: var(--chip-on); color: var(--chip-on-fg); border-color: var(--chip-on); transform: scale(1.18); }
+  @media (max-width: 520px) { .node { width: 44px; height: 44px; margin: -22px 0 0 -22px; } }
+  .panel-in { animation: panel-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+  .stage { position: relative; overflow: clip; background: radial-gradient(70% 60% at 50% 55%, var(--stage-glow), transparent 75%), linear-gradient(180deg, var(--stage-1), var(--stage-2)); }
+  .dock { display: flex; gap: 6px; width: max-content; max-width: 100%; margin-inline: auto; padding: 6px; overflow-x: auto; border: 1.5px solid var(--line); border-radius: 999px; background: var(--raised); box-shadow: var(--shadow); scrollbar-width: none; }
+  .dock button { display: flex; flex: none; align-items: center; gap: 7px; min-height: 46px; padding: 0 15px; border-radius: 999px; color: var(--ink); font-weight: 650; font-size: 0.96rem; white-space: nowrap; cursor: pointer; transition: background-color 0.25s ease, color 0.25s ease; }
+  .dock button:hover { background: var(--beige); }
+  .dock button[aria-pressed='true'] { background: var(--chip-on); color: var(--chip-on-fg); }
+  .ghost { position: absolute; top: 0; width: 410px; opacity: 0.6; cursor: pointer; transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .ghost:hover { opacity: 0.9; }
+  .ghost-l { left: 50%; margin-left: -640px; transform: perspective(1500px) rotateY(34deg) scale(0.8); }
+  .ghost-r { right: 50%; margin-right: -640px; transform: perspective(1500px) rotateY(-34deg) scale(0.8); }
+  .arrow { display: grid; place-items: center; flex: none; width: 52px; height: 52px; border: 2px solid var(--ink); border-radius: 50%; background: var(--raised); color: var(--ink); cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease; }
+  .arrow:hover { background: var(--ink); color: var(--paper); transform: scale(1.06); }
+
+  .stat-num { font-family: var(--font-display); color: var(--num); line-height: 0.98; font-size: clamp(3.4rem, 6.6vw, 5.6rem); font-variant-numeric: tabular-nums; }
+  .stat-source { font-size: 0.94rem; color: var(--ink-2); }
+  .dotseed { width: 15px; height: 15px; border-radius: 50%; background: var(--bar); transform: scale(0); transition: transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1); }
+  .dotseed.alt { background: transparent; border: 2.5px solid var(--bar); }
+  .in .dotseed, .dot-in .dotseed { transform: scale(1); }
+  .grow-bar { height: 10px; border-radius: 0 5px 5px 0; background: var(--bar); transform: scaleX(0); transform-origin: left; transition: transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .dot-in .grow-bar { transform: scaleX(1); }
+  .gauge { transition: stroke-dashoffset 1.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .wave-bar { width: 6px; border-radius: 3px; background: var(--bar); transform: scaleY(0.2); transform-origin: bottom; transition: transform 0.9s cubic-bezier(0.3, 1.3, 0.5, 1); }
+  .dot-in .wave-bar { transform: scaleY(1); }
+
+  .team-ring { transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .team-card:hover .team-ring { transform: rotate(100deg) scale(1.08); }
 }
 
 .skip { position: absolute; left: 12px; top: -80px; z-index: 100; background: var(--btn); color: var(--btn-fg); padding: 10px 18px; border-radius: 999px; }
 .skip:focus { top: 12px; }
 
-/* Growth rings draw outward once, on page load. The resting state is fully visible. */
-.ring-grow { animation: ring-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-box: view-box; transform-origin: center; }
-@keyframes ring-in { from { opacity: 0; transform: scale(0.86); } to { opacity: 1; transform: scale(1); } }
-.ring-new { animation: ring-add 0.5s ease-out both; transform-box: view-box; transform-origin: center; }
-@keyframes ring-add { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+.ring-grow { animation: ring-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-box: view-box; transform-origin: center; }
+.ring-new { animation: ring-add 0.6s ease-out both; transform-box: view-box; transform-origin: center; }
+.ring-spin { animation: spin 260s linear infinite; transform-origin: center; }
+.ring-ripple { animation: ripple 7s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+.sway { animation: sway 7s ease-in-out infinite alternate; transform-origin: 50% 100%; transform-box: fill-box; }
+.rise { animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes ring-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes ring-add { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes ripple { 0% { opacity: 0; transform: scale(0.22); } 12% { opacity: 0.7; } 100% { opacity: 0; transform: scale(1); } }
+@keyframes sway { from { transform: rotate(-1.4deg); } to { transform: rotate(1.4deg); } }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes panel-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes btn-ring { 0% { opacity: 0.7; transform: scale(1); } 100% { opacity: 0; transform: scale(1.16, 1.5); } }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; }
+  html:root { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+  .ring-ripple { display: none; }
 }
