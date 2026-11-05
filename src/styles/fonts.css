@@ -1,0 +1,8 @@
+@font-face { font-family: 'Gloock'; font-weight: 400; font-display: swap; src: url('@fontsource/gloock/files/gloock-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 100 900; font-display: swap; src: url('@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2') format('woff2'); }
+/* The next four match the type in the team's Figma screens and are used only inside the app demo. */
+@font-face { font-family: 'Merriweather'; font-weight: 400; font-display: swap; src: url('@fontsource/merriweather/files/merriweather-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Merriweather'; font-weight: 700; font-display: swap; src: url('@fontsource/merriweather/files/merriweather-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Merriweather Sans'; font-weight: 300 800; font-display: swap; src: url('@fontsource-variable/merriweather-sans/files/merriweather-sans-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-weight: 100 1000; font-display: swap; src: url('@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Libre Bodoni'; font-weight: 600; font-display: swap; src: url('@fontsource/libre-bodoni/files/libre-bodoni-latin-600-normal.woff2') format('woff2'); }

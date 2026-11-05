@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+@import './fonts.css';
+@import './app.css';
+
+/* Layout concept: growth rings cut through the page; type stays left-weighted and quiet around them.
+   Light uses the approved light palette, dark uses the approved dark palette. Tokens are the only source of colour. */
+:root {
+  --paper: #fff2d8;
+  --raised: #fff9ec;
+  --beige: #ebd6ba;
+  --sand: #bda583;
+  --ink: #093744;
+  --ink-2: #3b5c64;
+  --line: rgb(9 55 68 / 0.2);
+  --btn: #093744;
+  --btn-fg: #fff2d8;
+  --btn-hover: #0f4c5d;
+  --ring: #cdb693;
+  --ring-hard: #8f7450;
+  --ring-active: #093744;
+  --band: #093744;
+  --band-fg: #fff2d8;
+  --band-2: #d9c6a6;
+  --band-line: rgb(255 242 216 / 0.24);
+  --plate: #fff2d8;
+  --bar-track: #ebd6ba;
+  --bar: #093744;
+  --focus: #093744;
+  --sun: 0.75;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #071f27; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82; --ink: #f5e7d1; --ink-2: #c8bda9;
+    --line: rgb(245 231 209 / 0.18); --btn: #c9ad82; --btn-fg: #071f27; --btn-hover: #dcc39b;
+    --ring: #1f525b; --ring-hard: #c9ad82; --ring-active: #c9ad82;
+    --band: #0b303b; --band-fg: #f5e7d1; --band-2: #c9ad82; --band-line: rgb(245 231 209 / 0.18);
+    --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --focus: #f5e7d1;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --paper: #071f27; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82; --ink: #f5e7d1; --ink-2: #c8bda9;
+  --line: rgb(245 231 209 / 0.18); --btn: #c9ad82; --btn-fg: #071f27; --btn-hover: #dcc39b;
+  --ring: #1f525b; --ring-hard: #c9ad82; --ring-active: #c9ad82;
+  --band: #0b303b; --band-fg: #f5e7d1; --band-2: #c9ad82; --band-line: rgb(245 231 209 / 0.18);
+  --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --focus: #f5e7d1;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-raised: var(--raised);
+  --color-beige: var(--beige);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-btn: var(--btn);
+  --color-btn-fg: var(--btn-fg);
+  --color-band: var(--band);
+  --color-band-fg: var(--band-fg);
+  --color-band-2: var(--band-2);
+  --color-band-line: var(--band-line);
+  --color-plate: var(--plate);
+  --font-display: 'Gloock', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Hanken Grotesk', 'Segoe UI', system-ui, sans-serif;
+}
+
+@layer base {
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.08; text-wrap: balance; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+.on-band :focus-visible, .on-band:focus-visible { outline-color: var(--band-fg); }
+
+}
+
+@layer components {
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 768px) { .wrap { padding-left: 40px; padding-right: 40px; } }
+.prose-w { max-width: 62ch; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 48px; padding: 0.625rem 1.5rem; border-radius: 999px;
+  font-weight: 650; line-height: 1.2; text-align: center; cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn-solid { background: var(--btn); color: var(--btn-fg); }
+.btn-solid:hover { background: var(--btn-hover); }
+.btn-line { border: 1.5px solid var(--ink); color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--paper); }
+.band .btn-solid { background: var(--band-fg); color: var(--band); }
+.band .btn-solid:hover { background: var(--band-2); }
+.band .btn-line { border-color: var(--band-fg); color: var(--band-fg); }
+.band .btn-line:hover { background: var(--band-fg); color: var(--band); }
+.band { background: var(--band); color: var(--band-fg); }
+.tlink { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.tlink:hover { text-decoration-thickness: 2px; }
+
+}
+
+.skip { position: absolute; left: 12px; top: -80px; z-index: 100; background: var(--btn); color: var(--btn-fg); padding: 10px 18px; border-radius: 999px; }
+.skip:focus { top: 12px; }
+
+/* Growth rings draw outward once, on page load. The resting state is fully visible. */
+.ring-grow { animation: ring-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-box: view-box; transform-origin: center; }
+@keyframes ring-in { from { opacity: 0; transform: scale(0.86); } to { opacity: 1; transform: scale(1); } }
+.ring-new { animation: ring-add 0.5s ease-out both; transform-box: view-box; transform-origin: center; }
+@keyframes ring-add { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; }
+}

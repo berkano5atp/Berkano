@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Berkano | A proposed app for recovery self-management</title>
+    <meta name="claude:viewport-fit-sides" content="cover" />
+    <meta name="description" content="Berkano is a proposed, non-clinical mobile app to help people recovering from eating disorders or substance addiction notice triggers, cope with hard moments and stay close to support." />
+    <meta name="theme-color" content="#FFF2D8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#071F27" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Berkano" />
+    <meta property="og:title" content="Berkano | A proposed app for recovery self-management" />
+    <meta property="og:description" content="Recovery grows in rings, not straight lines. Explore the Berkano app concept, in development as a university team project." />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.png" />
+    <meta property="og:image:alt" content="The Berkano logo beside the line: Recovery grows in rings, not straight lines." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Apply a saved theme before first paint. With no saved choice the device setting applies through CSS.
+      try { var t = localStorage.getItem('berkano-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript><p style="padding:24px">Berkano is a proposed recovery self-management app. This site needs JavaScript. You can reach the team at berkano5atp@gmail.com.</p></noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
