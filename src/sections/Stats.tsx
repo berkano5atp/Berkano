@@ -64,7 +64,7 @@ function StatItem({ s, delay }: { s: Stat; delay: number }) {
 
 export function Stats() {
   return (
-    <section id="numbers" className="bg-sec" aria-labelledby="stats-title">
+    <section id="facts" className="bg-sec" aria-labelledby="stats-title">
       <div className="wrap sec">
         <h2 id="stats-title" className="h-sec max-w-[16ch]">The support landscape, in numbers.</h2>
         <div className="mt-12 grid gap-14 lg:mt-16">
