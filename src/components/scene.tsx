@@ -96,15 +96,15 @@ function Particles() {
         const y = d.y * h;
         if (dark) {
           const a = 0.2 + 0.8 * Math.max(0, Math.sin(t * 0.0012 + d.phase));
-          ctx.fillStyle = `rgba(233,205,150,${a * 0.22})`;
+          ctx.fillStyle = `rgba(212,150,43,${a * 0.22})`;
           ctx.beginPath(); ctx.arc(x, y, d.s * 4, 0, 6.3); ctx.fill();
-          ctx.fillStyle = `rgba(250,230,185,${a})`;
+          ctx.fillStyle = `rgba(240,200,120,${a})`;
           ctx.beginPath(); ctx.arc(x, y, d.s * 0.9, 0, 6.3); ctx.fill();
         } else {
           ctx.save();
           ctx.translate(x, y);
           ctx.rotate(Math.sin(t * 0.0006 + d.phase) * 1.2);
-          ctx.fillStyle = 'rgba(122,92,51,0.42)';
+          ctx.fillStyle = 'rgba(169,120,35,0.45)';
           ctx.beginPath(); ctx.ellipse(0, 0, d.s * 1.5, d.s * 0.6, 0, 0, 6.3); ctx.fill();
           ctx.restore();
         }

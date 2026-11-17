@@ -2,62 +2,62 @@
 @import './fonts.css';
 @import './app.css';
 
-/* Two scenes from one brand.
-   Light is a birch grove in the morning: airy cream, sand and teal, soft warm shadows.
-   Dark is the same grove at night: deep night teal, moonlit cream trunks and muted gold light. */
+/* Two scenes from one brand, in the team's updated palette.
+   Light is a birch grove by day: soft greige, teal, sage and gold.
+   Dark is the same grove at night: warm near-black, teal accents, moonlit trunks and gold light. */
 :root {
-  --paper: #fff9ec; --paper-2: #fff2d8; --raised: #fffdf7; --beige: #ebd6ba; --sand: #bda583;
-  --ink: #093744; --ink-2: #2f525c; --accent: #7a5c33; --line: rgb(9 55 68 / 0.16);
-  --btn: #093744; --btn-fg: #fff9ec; --btn-hover: #0f4c5d; --focus: #093744;
-  --chip: #fff2d8; --chip-on: #093744; --chip-on-fg: #fff9ec;
-  --ring: #d8c3a0; --ring-hard: #9c7f55; --ring-active: #093744; --ring-track: #efe0c4;
-  --band: #093744; --band-fg: #fff2d8; --band-2: #e2cfaf; --band-line: rgb(255 242 216 / 0.26);
-  --plate: #fff2d8; --bar-track: #ebd6ba; --bar: #093744; --num: #093744;
-  --shadow: 0 24px 60px -30px rgb(122 92 51 / 0.45);
-  --sky-1: #fffdf6; --sky-2: #fff2d8; --sky-3: #f9e4c2;
-  --sun-o: 1; --moon-o: 0; --sun-y: 0px; --moon-y: 90px; --glow: rgb(255 214 150 / 0.75);
-  --hill-1: #f3e2c6; --hill-2: #ebd6ba; --hill-3: #dcc4a0;
-  --trunk-b: #a9c4c4; --trunk-m: #0f4a58; --trunk-s: #7fa3a7; --mark-m: #fff2d8; --trunk-f: #fffdf6; --trunk-line: rgb(9 55 68 / 0.28);
-  --mark: #093744; --mark-b: #5f8a90; --leaf: #8f9a6c; --leaf-2: #b6a96f; --branch: #5e6f6c;
-  --stage-1: #fff9ec; --stage-2: #f8e6c8; --stage-glow: rgb(255 219 160 / 0.65); --sec: #fff2d8;
-  --particle: 122 92 51; --tree-trunk: #fffdf6; --soil: #dcc4a0; --root: #7a5c33;
+  --paper: #f6f3ef; --paper-2: #ece7df; --raised: #fbf9f6; --beige: #e6e7e4; --sand: #b7b5ac;
+  --ink: #192013; --ink-2: #4e5247; --accent: #7a5514; --line: rgb(25 32 19 / 0.15);
+  --btn: #5ca3a1; --btn-fg: #0d100a; --btn-hover: #6fb3b1; --focus: #192013;
+  --chip: #ece7df; --chip-on: #5ca3a1; --chip-on-fg: #0d100a;
+  --ring: #d3cec4; --ring-hard: #c7861d; --ring-active: #3f8784; --ring-track: #e2ddd4;
+  --band: #5ca3a1; --band-fg: #0d100a; --band-2: #13221f; --band-line: rgb(13 16 10 / 0.22);
+  --plate: #f6f3ef; --bar-track: #e6e7e4; --bar: #a97823; --num: #2e6b68;
+  --shadow: 0 24px 60px -30px rgb(25 32 19 / 0.35);
+  --sky-1: #fbfaf7; --sky-2: #f6f3ef; --sky-3: #ece7df;
+  --sun-o: 1; --moon-o: 0; --sun-y: 0px; --moon-y: 90px; --glow: rgb(232 182 92 / 0.5);
+  --hill-1: #ece7df; --hill-2: #e1dbd0; --hill-3: #d3ccbf;
+  --trunk-b: #bcd8d6; --trunk-m: #3f8784; --trunk-s: #8fc0be; --mark-m: #f6f3ef; --trunk-f: #fdfcfa; --trunk-line: rgb(25 32 19 / 0.25);
+  --mark: #192013; --mark-b: #86b4b2; --leaf: #8fa67a; --leaf-2: #d4962b; --branch: #6b6f65;
+  --stage-1: #f6f3ef; --stage-2: #ece7df; --stage-glow: rgb(92 163 161 / 0.22); --sec: #ece7df;
+  --particle: 169 120 35; --tree-trunk: #fdfcfa; --soil: #d3ccbf; --root: #a97823;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #071f27; --paper-2: #05171d; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82;
-    --ink: #f5e7d1; --ink-2: #cfc5b2; --accent: #d8bd92; --line: rgb(245 231 209 / 0.17);
-    --btn: #c9ad82; --btn-fg: #05171d; --btn-hover: #dfc69f; --focus: #f5e7d1;
-    --chip: #0b303b; --chip-on: #c9ad82; --chip-on-fg: #05171d;
-    --ring: #1b4a53; --ring-hard: #c9ad82; --ring-active: #c9ad82; --ring-track: #103742;
-    --band: #0b303b; --band-fg: #f5e7d1; --band-2: #d8bd92; --band-line: rgb(245 231 209 / 0.2);
-    --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --num: #e2c79c;
-    --shadow: 0 30px 70px -30px rgb(0 0 0 / 0.8);
-    --sky-1: #030f14; --sky-2: #071f27; --sky-3: #0b303b;
-    --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(201 173 130 / 0.32);
-    --hill-1: #0b303b; --hill-2: #092833; --hill-3: #061d25;
-    --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-s: #4d7272; --mark-m: #071f27; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
-    --mark: #071f27; --mark-b: #0b303b; --leaf: #3f7168; --leaf-2: #c9ad82; --branch: #7d9694;
-    --stage-1: #05171d; --stage-2: #0b303b; --stage-glow: rgb(201 173 130 / 0.2); --sec: #05171d;
-    --particle: 224 196 150; --tree-trunk: #f5e7d1; --soil: #0b303b; --root: #c9ad82;
+    --paper: #100e09; --paper-2: #0a0905; --raised: #201b13; --beige: #1a1b18; --sand: #514f46;
+    --ink: #e5ecdf; --ink-2: #b4b8ad; --accent: #d4962b; --line: rgb(229 236 223 / 0.15);
+    --btn: #5ca3a1; --btn-fg: #0d100a; --btn-hover: #74b6b4; --focus: #e5ecdf;
+    --chip: #1a1b18; --chip-on: #5ca3a1; --chip-on-fg: #0d100a;
+    --ring: #2f3028; --ring-hard: #a97823; --ring-active: #5ca3a1; --ring-track: #1f201b;
+    --band: #201b13; --band-fg: #e5ecdf; --band-2: #b4b8ad; --band-line: rgb(229 236 223 / 0.16);
+    --plate: #f6f3ef; --bar-track: #1a1b18; --bar: #b4b8ad; --num: #5ca3a1;
+    --shadow: 0 30px 70px -30px rgb(0 0 0 / 0.85);
+    --sky-1: #050402; --sky-2: #100e09; --sky-3: #201b13;
+    --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(229 236 223 / 0.2);
+    --hill-1: #201b13; --hill-2: #17140e; --hill-3: #0c0a06;
+    --trunk-b: #1d2e2c; --trunk-m: #2f5856; --trunk-s: #2f5856; --mark-m: #100e09; --trunk-f: #e5ecdf; --trunk-line: rgb(229 236 223 / 0.18);
+    --mark: #100e09; --mark-b: #142220; --leaf: #7e9e61; --leaf-2: #a97823; --branch: #6b6f65;
+    --stage-1: #100e09; --stage-2: #201b13; --stage-glow: rgb(92 163 161 / 0.16); --sec: #17140e;
+    --particle: 212 150 43; --tree-trunk: #e5ecdf; --soil: #201b13; --root: #a97823;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --paper: #071f27; --paper-2: #05171d; --raised: #0b303b; --beige: #16434b; --sand: #c9ad82;
-  --ink: #f5e7d1; --ink-2: #cfc5b2; --accent: #d8bd92; --line: rgb(245 231 209 / 0.17);
-  --btn: #c9ad82; --btn-fg: #05171d; --btn-hover: #dfc69f; --focus: #f5e7d1;
-  --chip: #0b303b; --chip-on: #c9ad82; --chip-on-fg: #05171d;
-  --ring: #1b4a53; --ring-hard: #c9ad82; --ring-active: #c9ad82; --ring-track: #103742;
-  --band: #0b303b; --band-fg: #f5e7d1; --band-2: #d8bd92; --band-line: rgb(245 231 209 / 0.2);
-  --plate: #f5e7d1; --bar-track: #16434b; --bar: #c9ad82; --num: #e2c79c;
-  --shadow: 0 30px 70px -30px rgb(0 0 0 / 0.8);
-  --sky-1: #030f14; --sky-2: #071f27; --sky-3: #0b303b;
-  --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(201 173 130 / 0.32);
-  --hill-1: #0b303b; --hill-2: #092833; --hill-3: #061d25;
-  --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-s: #4d7272; --mark-m: #071f27; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
-  --mark: #071f27; --mark-b: #0b303b; --leaf: #3f7168; --leaf-2: #c9ad82; --branch: #7d9694;
-  --stage-1: #05171d; --stage-2: #0b303b; --stage-glow: rgb(201 173 130 / 0.2); --sec: #05171d;
-  --particle: 224 196 150; --tree-trunk: #f5e7d1; --soil: #0b303b; --root: #c9ad82;
+  --paper: #100e09; --paper-2: #0a0905; --raised: #201b13; --beige: #1a1b18; --sand: #514f46;
+  --ink: #e5ecdf; --ink-2: #b4b8ad; --accent: #d4962b; --line: rgb(229 236 223 / 0.15);
+  --btn: #5ca3a1; --btn-fg: #0d100a; --btn-hover: #74b6b4; --focus: #e5ecdf;
+  --chip: #1a1b18; --chip-on: #5ca3a1; --chip-on-fg: #0d100a;
+  --ring: #2f3028; --ring-hard: #a97823; --ring-active: #5ca3a1; --ring-track: #1f201b;
+  --band: #201b13; --band-fg: #e5ecdf; --band-2: #b4b8ad; --band-line: rgb(229 236 223 / 0.16);
+  --plate: #f6f3ef; --bar-track: #1a1b18; --bar: #b4b8ad; --num: #5ca3a1;
+  --shadow: 0 30px 70px -30px rgb(0 0 0 / 0.85);
+  --sky-1: #050402; --sky-2: #100e09; --sky-3: #201b13;
+  --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(229 236 223 / 0.2);
+  --hill-1: #201b13; --hill-2: #17140e; --hill-3: #0c0a06;
+  --trunk-b: #1d2e2c; --trunk-m: #2f5856; --trunk-s: #2f5856; --mark-m: #100e09; --trunk-f: #e5ecdf; --trunk-line: rgb(229 236 223 / 0.18);
+  --mark: #100e09; --mark-b: #142220; --leaf: #7e9e61; --leaf-2: #a97823; --branch: #6b6f65;
+  --stage-1: #100e09; --stage-2: #201b13; --stage-glow: rgb(92 163 161 / 0.16); --sec: #17140e;
+  --particle: 212 150 43; --tree-trunk: #e5ecdf; --soil: #201b13; --root: #a97823;
   color-scheme: dark;
 }
 
@@ -154,8 +154,8 @@ html body {
     .hero-layer { height: 390px !important; -webkit-mask-image: linear-gradient(transparent, #000 34%); mask-image: linear-gradient(transparent, #000 34%); }
     .hero-layer svg { overflow: hidden; } }
   .sun, .moon { position: absolute; inset: 0; border-radius: 50%; transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1); }
-  .sun { opacity: var(--sun-o); transform: translateY(var(--sun-y)); background: radial-gradient(circle, #fff6df 0%, #f6dcae 55%, #ebc98f 100%); box-shadow: 0 0 110px 60px var(--glow); }
-  .moon { opacity: var(--moon-o); transform: translateY(var(--moon-y)); background: radial-gradient(circle at 38% 36%, #f9eedb 0%, #f5e7d1 55%, #d9c6a6 100%); box-shadow: 0 0 120px 44px var(--glow); }
+  .sun { opacity: var(--sun-o); transform: translateY(var(--sun-y)); background: radial-gradient(circle, #fff7e6 0%, #f3d7a2 55%, #e4b25c 100%); box-shadow: 0 0 110px 60px var(--glow); }
+  .moon { opacity: var(--moon-o); transform: translateY(var(--moon-y)); background: radial-gradient(circle at 38% 36%, #f7faf3 0%, #e5ecdf 55%, #c3cbbb 100%); box-shadow: 0 0 120px 44px var(--glow); }
   .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
   .reveal { transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
