@@ -16,11 +16,14 @@ function makeTrunks(xs: number[], width: number, seed: number, height: number): 
   }));
 }
 
-function Trunks({ trunks, height, fill, mark, line, leaves }: { trunks: Trunk[]; height: number; fill: string; mark: string; line?: string; leaves?: boolean }) {
+function Trunks({ trunks, height, fill, mark, line, leaves, first }: { trunks: Trunk[]; height: number; fill: string; mark: string; line?: string; leaves?: boolean; first?: { fill: string; mark: string } }) {
   return (
     <>
       {trunks.map((t, i) => {
         const top = t.w * 0.55;
+        // The trunk nearest the headline can be lighter, so the headline stays clear of it.
+        const trunkFill = i === 0 && first ? first.fill : fill;
+        const markFill = i === 0 && first ? first.mark : mark;
         const lean = t.lean;
         const clipId = `tk-${t.x}-${Math.round(t.w * 10)}`;
         // Trunks run far above the frame so they always leave through the top of the hero.
@@ -28,12 +31,12 @@ function Trunks({ trunks, height, fill, mark, line, leaves }: { trunks: Trunk[];
         return (
           <g key={i}>
             <clipPath id={clipId}><polygon points={points} /></clipPath>
-            <polygon points={points} fill={fill} stroke={line} strokeWidth={line ? 1.2 : 0} style={{ transition: 'fill 0.8s ease' }} />
+            <polygon points={points} fill={trunkFill} stroke={line} strokeWidth={line ? 1.2 : 0} style={{ transition: 'fill 0.8s ease' }} />
             <g clipPath={`url(#${clipId})`}>
               {t.marks.map((m, k) => {
                 const shift = (lean * (height - m.y)) / (height + 810);
                 const narrow = 1 - ((height - m.y) / (height + 810)) * 0.45;
-                return <rect key={k} x={t.x + t.w / 2 + shift - (t.w * narrow) / 2 + m.dx * t.w * narrow * 0.7} y={m.y} width={m.w * t.w * narrow} height={m.h} rx={m.h / 2} fill={mark} style={{ transition: 'fill 0.8s ease' }} />;
+                return <rect key={k} x={t.x + t.w / 2 + shift - (t.w * narrow) / 2 + m.dx * t.w * narrow * 0.7} y={m.y} width={m.w * t.w * narrow} height={m.h} rx={m.h / 2} fill={markFill} style={{ transition: 'fill 0.8s ease' }} />;
               })}
             </g>
             {leaves && <Branch x={t.x + t.w / 2 + lean * 0.45} y={height * 0.3} flip={i % 2 === 1} seed={i * 13 + 5} />}
@@ -159,7 +162,7 @@ export function HeroScene() {
       </div>
       <div className="hero-layer h-[74%]" data-depth="0.14">
         <svg viewBox="0 0 1600 620" preserveAspectRatio="xMaxYMax slice">
-          <Trunks trunks={mid} height={620} fill="var(--trunk-m)" mark="var(--mark)" line="var(--trunk-line)" />
+          <Trunks trunks={mid} height={620} fill="var(--trunk-m)" mark="var(--mark-m)" line="var(--trunk-line)" first={{ fill: 'var(--trunk-s)', mark: 'var(--mark)' }} />
           <path d="M0 560 C 380 480 640 590 960 530 S 1400 480 1600 540 V 630 H 0 Z" fill="var(--hill-2)" style={{ transition: 'fill 0.8s ease' }} />
         </svg>
       </div>

@@ -17,8 +17,8 @@
   --sky-1: #fffdf6; --sky-2: #fff2d8; --sky-3: #f9e4c2;
   --sun-o: 1; --moon-o: 0; --sun-y: 0px; --moon-y: 90px; --glow: rgb(255 214 150 / 0.75);
   --hill-1: #f3e2c6; --hill-2: #ebd6ba; --hill-3: #dcc4a0;
-  --trunk-b: #efe0c6; --trunk-m: #fff6e3; --trunk-f: #fffdf6; --trunk-line: rgb(9 55 68 / 0.28);
-  --mark: #093744; --mark-b: #bda583; --leaf: #8f9a6c; --leaf-2: #b6a96f; --branch: #5e6f6c;
+  --trunk-b: #a9c4c4; --trunk-m: #0f4a58; --trunk-s: #7fa3a7; --mark-m: #fff2d8; --trunk-f: #fffdf6; --trunk-line: rgb(9 55 68 / 0.28);
+  --mark: #093744; --mark-b: #5f8a90; --leaf: #8f9a6c; --leaf-2: #b6a96f; --branch: #5e6f6c;
   --stage-1: #fff9ec; --stage-2: #f8e6c8; --stage-glow: rgb(255 219 160 / 0.65); --sec: #fff2d8;
   --particle: 122 92 51; --tree-trunk: #fffdf6; --soil: #dcc4a0; --root: #7a5c33;
 }
@@ -35,7 +35,7 @@
     --sky-1: #030f14; --sky-2: #071f27; --sky-3: #0b303b;
     --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(201 173 130 / 0.32);
     --hill-1: #0b303b; --hill-2: #092833; --hill-3: #061d25;
-    --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
+    --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-s: #4d7272; --mark-m: #071f27; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
     --mark: #071f27; --mark-b: #0b303b; --leaf: #3f7168; --leaf-2: #c9ad82; --branch: #7d9694;
     --stage-1: #05171d; --stage-2: #0b303b; --stage-glow: rgb(201 173 130 / 0.2); --sec: #05171d;
     --particle: 224 196 150; --tree-trunk: #f5e7d1; --soil: #0b303b; --root: #c9ad82;
@@ -54,7 +54,7 @@
   --sky-1: #030f14; --sky-2: #071f27; --sky-3: #0b303b;
   --sun-o: 0; --moon-o: 1; --sun-y: 90px; --moon-y: 0px; --glow: rgb(201 173 130 / 0.32);
   --hill-1: #0b303b; --hill-2: #092833; --hill-3: #061d25;
-  --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
+  --trunk-b: #16434b; --trunk-m: #4d7272; --trunk-s: #4d7272; --mark-m: #071f27; --trunk-f: #f5e7d1; --trunk-line: rgb(245 231 209 / 0.2);
   --mark: #071f27; --mark-b: #0b303b; --leaf: #3f7168; --leaf-2: #c9ad82; --branch: #7d9694;
   --stage-1: #05171d; --stage-2: #0b303b; --stage-glow: rgb(201 173 130 / 0.2); --sec: #05171d;
   --particle: 224 196 150; --tree-trunk: #f5e7d1; --soil: #0b303b; --root: #c9ad82;
@@ -135,9 +135,12 @@ html body {
   .chip { min-height: 44px; padding: 0.4rem 1rem; border: 1.5px solid var(--line); border-radius: 999px; background: var(--chip); color: var(--ink); font-weight: 650; font-size: 0.96rem; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
   .chip:hover { border-color: var(--ink); }
   .chip[aria-pressed='true'] { background: var(--chip-on); border-color: var(--chip-on); color: var(--chip-on-fg); }
-  .navlink { position: relative; font-weight: 600; padding-block: 4px; }
-  .navlink::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
-  .navlink:hover::after, .navlink[aria-current='page']::after { transform: scaleX(1); }
+  .navdock { align-items: center; gap: 2px; padding: 4px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--raised); }
+  .navpill { display: flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px; font-weight: 650; white-space: nowrap; transition: background-color 0.25s ease, color 0.25s ease; }
+  .navpill:hover { background: var(--beige); }
+  .navpill[aria-current] { background: var(--chip-on); color: var(--chip-on-fg); }
+  .navpill-m { padding: 8px 16px; border-radius: 999px; transition: background-color 0.25s ease, color 0.25s ease; }
+  .navpill-m[aria-current] { background: var(--chip-on); color: var(--chip-on-fg); }
 
   .toggle { position: relative; width: 68px; height: 38px; flex: none; border: 1.5px solid var(--line); border-radius: 999px; background: var(--chip); cursor: pointer; }
   .toggle-knob { position: absolute; top: 3px; left: 3px; display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--btn); color: var(--btn-fg); transition: transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1); }

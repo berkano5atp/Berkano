@@ -7,7 +7,7 @@ import { FullLogo, Symbol, ThemeToggle } from './brand';
 const LINKS = [
   { to: '/#features', label: 'Features' },
   { to: '/#demo', label: 'Try the demo' },
-  { to: '/#numbers', label: 'Numbers' },
+  { to: '/#facts', label: 'Facts' },
   { to: '/#team', label: 'Team' },
   { to: '/resources', label: 'Resources' },
 ];
@@ -34,10 +34,41 @@ function ScrollRing() {
   );
 }
 
+/** Works out which main section is on screen, so the navigation can highlight it. */
+function useActiveSection(enabled: boolean) {
+  const [active, setActive] = useState<string | null>(null);
+  useEffect(() => {
+    if (!enabled) return setActive(null);
+    let raf = 0;
+    const read = () => {
+      raf = 0;
+      const line = window.innerHeight * 0.4;
+      let found: string | null = null;
+      for (const l of LINKS) {
+        const id = l.to.split('#')[1];
+        const r = id ? document.getElementById(id)?.getBoundingClientRect() : undefined;
+        if (r && r.top <= line && r.bottom > line) found = id;
+      }
+      setActive(found);
+    };
+    const queue = () => { if (!raf) raf = requestAnimationFrame(read); };
+    read();
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('scroll', queue); window.removeEventListener('resize', queue); };
+  }, [enabled]);
+  return active;
+}
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const { page } = useRouter();
   useEffect(() => setOpen(false), [page]);
+  const section = useActiveSection(page === 'home');
+  const current = (to: string) => {
+    if (to === '/resources') return page === 'resources' ? 'page' : undefined;
+    return to.split('#')[1] === section ? 'location' : undefined;
+  };
   return (
     <header className="sticky z-40 border-b border-line bg-paper/95 backdrop-blur" style={{ top: 'env(safe-area-inset-top, 0px)' }}>
       <div className="wrap flex h-[72px] items-center justify-between gap-3">
@@ -45,9 +76,9 @@ export function Header() {
           <span className="relative inline-grid"><Symbol size={46} /><ScrollRing /></span>
           <span className="font-display text-[1.05rem] tracking-[0.06em] sm:text-xl sm:tracking-[0.08em]">BERKANO</span>
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label="Main" className="navdock hidden lg:flex">
           {LINKS.map((l) => (
-            <Link key={l.to} to={l.to} aria-current={l.to === '/resources' && page === 'resources' ? 'page' : undefined} className="navlink">{l.label}</Link>
+            <Link key={l.to} to={l.to} aria-current={current(l.to)} className="navpill">{l.label}</Link>
           ))}
         </nav>
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
@@ -67,7 +98,7 @@ export function Header() {
       </div>
       {open && (
         <nav id="mobile-menu" aria-label="Mobile" className="wrap flex flex-col gap-1 border-t border-line pt-3 pb-5 lg:hidden">
-          {LINKS.map((l) => <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="py-2.5 font-display text-2xl">{l.label}</Link>)}
+          {LINKS.map((l) => <Link key={l.to} to={l.to} aria-current={current(l.to)} onClick={() => setOpen(false)} className="navpill-m font-display text-2xl">{l.label}</Link>)}
           <Link to="/#join" onClick={() => setOpen(false)} className="btn btn-solid mt-3">Join the interest list</Link>
         </nav>
       )}

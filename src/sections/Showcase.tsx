@@ -63,9 +63,9 @@ export function Showcase() {
         </Reveal>
 
         <div className="relative mt-10">
-          {/* Rings turn behind the phone as you move between screens. */}
+          {/* Rings turn behind the phone as you move between screens. They stay within the phone's height so they never run behind the controls or text. */}
           <div
-            className="pointer-events-none absolute top-1/2 left-1/2 aspect-square w-[min(1040px,170vw)]"
+            className="pointer-events-none absolute top-1/2 left-1/2 aspect-square w-[min(820px,170vw)]"
             style={{ transform: `translate(-50%, -50%) rotate(${index * 28}deg)`, transition: reduced ? undefined : 'transform 1s cubic-bezier(0.2,0.7,0.2,1)' }}
           >
             <TreeRings widths={RINGS} start={70} className="h-full w-full" />
