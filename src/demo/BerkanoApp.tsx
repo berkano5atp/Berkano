@@ -58,7 +58,7 @@ function HomeScreen({ s }: { s: DemoState }) {
       <section className="bk-card" aria-label="Current goal, sample data">
         <div className="bk-goalhead">
           <span className="bk-label">CURRENT GOAL</span>
-          <span className="bk-pct"><Target size={14} style={{ color: 'var(--a-icon)' }} />75% Complete</span>
+          <span className="bk-pct"><span className="bk-dot" aria-hidden="true" />75% Complete</span>
         </div>
         <div className="bk-goal"><strong>5 Days</strong><span>Clean and sober</span></div>
         <div className="bk-stats">
@@ -71,7 +71,7 @@ function HomeScreen({ s }: { s: DemoState }) {
         <h3>Recent Activity</h3>
         {[['Morning Meditation', 'Completed 10 mins ago'], ['Support Group Call', 'Completed 2 hours ago']].map(([a, b]) => (
           <div className="bk-act" key={a}>
-            <i><Check size={15} strokeWidth={3} /></i>
+            <i><Check size={16} strokeWidth={3} /></i>
             <span><b>{a}</b>{b}</span>
           </div>
         ))}
@@ -311,7 +311,7 @@ function Support({ s }: { s: DemoState }) {
       </div>
       <div style={{ display: 'grid', placeItems: 'center', marginBottom: 12 }}><Logo /></div>
       <h2 className="bk-title">Support &amp; help</h2>
-      <section className="bk-panel" style={{ marginTop: 14 }}>
+      <section className="bk-panel bk-hubcard" style={{ marginTop: 14 }}>
         <h3 style={{ fontSize: 'calc(20px * var(--s))' }}>Professional hub</h3>
         <p>Explore professional support for your recovery.</p>
         {Object.keys(HUB).concat('Hotlines & Resources').map((t) => (
