@@ -78,14 +78,13 @@ export function Team() {
       </Reveal>
       <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 max-[359px]:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
         {TEAM.map((m, i) => (
-          <Reveal as="li" key={m.name} delay={i * 90} className="team-card min-w-0">
+          <Reveal as="li" key={m.name} delay={i * 90} className="min-w-0">
             <div className="relative aspect-square overflow-hidden rounded-full bg-beige">
               {m.photo ? (
                 <img src={m.photo} alt={`Portrait of ${m.name}`} loading="lazy" className="h-full w-full object-cover" />
               ) : (
                 <div role="img" aria-label={`Photo placeholder for ${m.name}`} className="grid h-full w-full place-items-center">
-                  <span className="team-ring absolute inset-0"><TreeRings widths={[24, 18, 7 + i, 26, 20, 8, 28]} start={16 + i * 4} viewBox="-150 -150 300 300" className="h-full w-full" /></span>
-                  <span className="relative font-display text-[clamp(1.8rem,3.4vw,2.8rem)] text-ink">{m.initials}</span>
+                  <span className="font-display text-[clamp(1.8rem,3.4vw,2.8rem)] text-ink">{m.initials}</span>
                 </div>
               )}
             </div>
