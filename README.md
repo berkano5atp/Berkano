@@ -77,7 +77,6 @@ The call to action opens the visitor's email app with a prepared message to `ber
 
 ## Before the viva
 
-- [ ] Add Hamda's and Mohamed's photographs (the other three are in).
 - [ ] Set `VITE_SITE_URL`, deploy, and confirm HTTPS on your own domain.
 - [ ] Send a real test email through each email button, and confirm it arrives.
 - [ ] Re-check every link and number in `src/data/resources.ts` and `src/data/stats.ts`.
