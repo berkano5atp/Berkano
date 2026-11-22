@@ -1,4 +1,6 @@
+import aaqil from '../assets/team/aaqil.jpg';
 import abarniga from '../assets/team/abarniga.jpg';
+import hamda from '../assets/team/hamda.jpg';
 import olu from '../assets/team/olu.jpg';
 import vishmi from '../assets/team/vishmi.jpg';
 
@@ -13,6 +15,6 @@ export const TEAM: Member[] = [
   { name: 'Vishmi De Alwis', role: 'Team Leader', initials: 'VD', photo: vishmi },
   { name: 'Sivabalasundaram Abarniga', role: 'Team Member', initials: 'SA', photo: abarniga },
   { name: 'Olu Wadigasinghe', role: 'Team Member', initials: 'OW', photo: olu },
-  { name: 'Hamda Dahalan', role: 'Team Member', initials: 'HD' },
-  { name: 'Mohamed Aaqil Aslam', role: 'Team Member', initials: 'MA' },
+  { name: 'Hamda Dahalan', role: 'Team Member', initials: 'HD', photo: hamda },
+  { name: 'Mohamed Aaqil Aslam', role: 'Team Member', initials: 'MA', photo: aaqil },
 ];
