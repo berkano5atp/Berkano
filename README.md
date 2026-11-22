@@ -41,7 +41,7 @@ These steps use Cloudflare Pages. Netlify and Vercel work almost the same way.
 
 | To change | Edit |
 | --- | --- |
-| Team photographs | Add square images to `public/team/`, then set `photo` in `src/data/team.ts` |
+| Team photographs | Add square images to `src/assets/team/`, import them in `src/data/team.ts` and set `photo` |
 | Social media links | Add real accounts to `SOCIAL_LINKS` in `src/data/site.ts`. The footer shows them only when the list has entries |
 | Support resources | `src/data/resources.ts` |
 | Statistics, with their sources | `src/data/stats.ts` |
@@ -77,7 +77,7 @@ The call to action opens the visitor's email app with a prepared message to `ber
 
 ## Before the viva
 
-- [ ] Add real team photographs.
+- [ ] Add Hamda's and Mohamed's photographs (the other three are in).
 - [ ] Set `VITE_SITE_URL`, deploy, and confirm HTTPS on your own domain.
 - [ ] Send a real test email through each email button, and confirm it arrives.
 - [ ] Re-check every link and number in `src/data/resources.ts` and `src/data/stats.ts`.
