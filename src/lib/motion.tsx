@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ElementType, type ReactNode, type RefObject } from 'react';
+import { useEffect, useRef, useState, type ElementType, type ReactNode, type RefObject } from 'react';
 
 const QUERY = '(prefers-reduced-motion: reduce)';
 
@@ -54,11 +54,11 @@ export function useSectionProgress(ref: RefObject<HTMLElement>, enabled = true) 
   return p;
 }
 
-export function Reveal({ as, children, delay = 0, className = '', style }: { as?: ElementType; children: ReactNode; delay?: number; className?: string; style?: CSSProperties }) {
+export function Reveal({ as, children, delay = 0, className = '' }: { as?: ElementType; children: ReactNode; delay?: number; className?: string }) {
   const [ref, seen] = useInView<HTMLElement>();
   const Tag = (as ?? 'div') as ElementType;
   return (
-    <Tag ref={ref} className={`reveal ${seen ? 'in' : ''} ${className}`} style={{ ...style, transitionDelay: `${delay}ms` }}>
+    <Tag ref={ref} className={`reveal ${seen ? 'in' : ''} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </Tag>
   );
@@ -70,7 +70,7 @@ const easeOut = (t: number) => 1 - Math.pow(1 - t, 4);
  * Counts from zero to `value` when it enters view, and always lands on the exact value.
  * Screen readers and reduced-motion visitors get the final figure immediately.
  */
-export function CountUp({ value, decimals = 0, duration = 1800, className = '' }: { value: number; decimals?: number; duration?: number; className?: string }) {
+export function CountUp({ value, decimals = 0, duration = 1800 }: { value: number; decimals?: number; duration?: number }) {
   const reduced = useReducedMotion();
   const [ref, seen] = useInView<HTMLSpanElement>('0px 0px -8% 0px');
   const [shown, setShown] = useState(0);
@@ -88,7 +88,7 @@ export function CountUp({ value, decimals = 0, duration = 1800, className = '' }
     return () => cancelAnimationFrame(raf);
   }, [seen, reduced, value, duration]);
   return (
-    <span ref={ref} className={`tabular-nums ${className}`} data-final={fmt(value)}>
+    <span ref={ref} className="tabular-nums">
       <span className="sr-only">{fmt(value)}</span>
       <span aria-hidden="true" data-count>{fmt(reduced ? value : shown)}</span>
     </span>

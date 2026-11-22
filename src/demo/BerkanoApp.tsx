@@ -112,7 +112,6 @@ function SafeMode({ s }: { s: DemoState }) {
 
   return (
     <div className="bk-modalwrap" ref={root} role="dialog" aria-modal="true" aria-label="Safe mode" onKeyDown={onKey}>
-      <div className="bk-dimtop" aria-hidden="true"><Logo /><Settings size={24} /></div>
       <div className="bk-modal">
         <div className="bk-modalhead">
           <span className="bk-logo-s"><img src={symbol} alt="" /></span>
@@ -464,7 +463,7 @@ export function BerkanoApp({ state }: { state: DemoState }) {
   );
 }
 
-/** A small, non-interactive copy of one screen, used as the picker thumbnail and screen mockup. */
+/** A non-interactive copy of one screen, used for the tilted phones beside the demo. */
 export function AppThumbnail({ screen }: { screen: DemoScreen }) {
   const s = useDemoState(screen);
   return (

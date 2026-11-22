@@ -112,10 +112,7 @@ export function Resources() {
       <section className="wrap py-14" aria-label="Organisations">
         <div role="group" aria-label="Filter by topic" className="flex flex-wrap gap-2">
           {[{ id: 'all' as const, label: 'All topics' }, ...TOPICS].map((t) => (
-            <button
-              key={t.id} type="button" aria-pressed={topic === t.id} onClick={() => setTopic(t.id)}
-              className="chip"
-            >
+            <button key={t.id} type="button" className="chip" aria-pressed={topic === t.id} onClick={() => setTopic(t.id)}>
               {t.label}
             </button>
           ))}

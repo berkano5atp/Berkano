@@ -25,7 +25,7 @@ function StatGraphic({ g, seen }: { g: Graphic; seen: boolean }) {
   if (g.kind === 'bars') {
     return (
       <div className="mt-4 grid gap-1.5" aria-hidden="true">
-        {PROVIDERS_2025.map((r, i) => <span key={r.provider} className="block rounded-r bg-transparent"><span className="grow-bar block" style={{ width: `${Math.max(1.5, (r.count / 2520) * 100)}%`, transitionDelay: `${i * 90}ms` }} /></span>)}
+        {PROVIDERS_2025.map((r, i) => <span key={r.provider} className="block"><span className="grow-bar block" style={{ width: `${Math.max(1.5, (r.count / 2520) * 100)}%`, transitionDelay: `${i * 90}ms` }} /></span>)}
       </div>
     );
   }

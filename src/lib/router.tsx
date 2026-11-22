@@ -29,7 +29,7 @@ function parse(): { page: Page; section: string | null } {
 }
 
 /** `to` is written as a production URL: "/", "/resources" or "/#demo". */
-export function hrefFor(to: string): string {
+function hrefFor(to: string): string {
   if (!HASH_MODE) return to;
   const [path, hash] = to.split('#');
   if (hash) return `#${hash}`;

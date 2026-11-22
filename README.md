@@ -65,7 +65,7 @@ scripts/       post-build, Artifact build and logo preparation
 
 ## Logo
 
-`public/brand/berkano-logo-original.png` is the supplied artwork. The transparent versions were derived from its pixels by `scripts/prepare-logo.py`, with no shapes redrawn. In dark mode the logo sits on a cream plate, so its colours do not change. The source is only 500 x 500 px, so replace the derived files with an export from your original design file when you can.
+`public/brand/berkano-logo-original.png` is the supplied artwork. The transparent versions were derived from its pixels by `scripts/prepare-logo.py`, with no shapes redrawn. In dark mode the logo sits on a light plate, so its colours do not change. The source is only 500 x 500 px, so replace the derived files with an export from your original design file when you can.
 
 ## Analytics
 
@@ -96,4 +96,4 @@ It uses hash links (`#resources`) because Artifacts cannot change their path. Th
 
 ## Fonts
 
-Gloock, Hanken Grotesk, Merriweather, Merriweather Sans, DM Sans and Libre Bodoni are self-hosted through Fontsource under the SIL Open Font License, so visitors make no requests to Google Fonts.
+Gloock, Hanken Grotesk, Oswald and Lexend are self-hosted through Fontsource under the SIL Open Font License, so visitors make no requests to Google Fonts.

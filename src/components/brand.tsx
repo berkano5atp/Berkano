@@ -4,7 +4,7 @@ import logo from '../assets/brand/berkano-logo.png';
 import symbol from '../assets/brand/berkano-symbol.png';
 import { useTheme } from '../lib/theme';
 
-/** The official logo always sits on a cream plate, so its colours stay unchanged in dark mode too. */
+/** The official logo always sits on a light plate, so its colours stay unchanged in dark mode too. */
 export function FullLogo({ className = '' }: { className?: string }) {
   return (
     <span className={`inline-block rounded-[28px] p-6 ${className}`} style={{ background: 'var(--plate)' }}>
@@ -46,8 +46,8 @@ function wobblyCircle(r: number, seed: number, amp: number) {
  * A trunk cross-section. `widths` lists the gap between each ring, from the centre outward.
  * Narrow gaps are drawn in a stronger colour: they read as harder seasons, and they stay in the trunk.
  */
-export function TreeRings({ widths, start = 34, viewBox, animate, lastIsNew, className, spin }: {
-  widths: number[]; start?: number; viewBox?: string; animate?: boolean; lastIsNew?: boolean; className?: string; spin?: boolean;
+export function TreeRings({ widths, start = 34, viewBox, animate, lastIsNew, className }: {
+  widths: number[]; start?: number; viewBox?: string; animate?: boolean; lastIsNew?: boolean; className?: string;
 }) {
   const rings = useMemo(() => {
     let r = start;
@@ -60,16 +60,14 @@ export function TreeRings({ widths, start = 34, viewBox, animate, lastIsNew, cla
   return (
     <svg viewBox={viewBox ?? `${-size} ${-size} ${size * 2} ${size * 2}`} className={className} aria-hidden="true" fill="none">
       <g className={animate ? 'ring-grow' : undefined}>
-        <g className={spin ? 'ring-spin' : undefined}>
-          {rings.map((ring) => (
-            <path
-              key={ring.key} d={ring.d}
-              className={lastIsNew && ring.key === rings.length - 1 ? 'ring-new' : undefined}
-              stroke={ring.hard ? 'var(--ring-hard)' : 'var(--ring)'}
-              strokeWidth={ring.hard ? 2.4 : 1.5}
-            />
-          ))}
-        </g>
+        {rings.map((ring) => (
+          <path
+            key={ring.key} d={ring.d}
+            className={lastIsNew && ring.key === rings.length - 1 ? 'ring-new' : undefined}
+            stroke={ring.hard ? 'var(--ring-hard)' : 'var(--ring)'}
+            strokeWidth={ring.hard ? 2.4 : 1.5}
+          />
+        ))}
       </g>
     </svg>
   );

@@ -64,8 +64,7 @@ export function Story() {
                 </div>
               ))}
             </div>
-            
-            <nav aria-label="Story steps" className="mt-2 flex gap-0 lg:absolute lg:bottom-4 lg:left-[-10px]">
+            <nav aria-label="Story steps" className="mt-2 flex lg:absolute lg:bottom-4 lg:left-[-10px]">
               {BEATS.map((b, i) => (
                 <button key={b.title} type="button" className="story-dot" aria-label={`Step ${i + 1}: ${b.title}`} aria-current={i === active ? 'step' : undefined} onClick={() => jump(i)}><i /></button>
               ))}

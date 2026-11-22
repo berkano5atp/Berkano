@@ -33,7 +33,6 @@ export function Showcase() {
     const open = (e: Event) => setScreen((e as CustomEvent<DemoScreen>).detail);
     window.addEventListener('berkano-demo', open);
     return () => window.removeEventListener('berkano-demo', open);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const pick = (id: DemoScreen) => {
@@ -63,7 +62,7 @@ export function Showcase() {
         </Reveal>
 
         <div className="relative mt-10">
-          {/* Rings turn behind the phone as you move between screens. They stay within the phone's height so they never run behind the controls or text. */}
+          {/* Rings turn behind the phone as you move between screens. */}
           <div
             className="pointer-events-none absolute top-1/2 left-1/2 aspect-square w-[min(820px,170vw)]"
             style={{ transform: `translate(-50%, -50%) rotate(${index * 28}deg)`, transition: reduced ? undefined : 'transform 1s cubic-bezier(0.2,0.7,0.2,1)' }}

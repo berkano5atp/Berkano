@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useReducedMotion } from '../lib/motion';
 
+const FADE = { transition: 'fill 0.8s ease' };
+
+/** A seeded random generator, so the illustrations look the same on every visit. */
 function rng(seed: number) {
   let s = seed;
   return () => (s = (s * 16807) % 2147483647) / 2147483647;
@@ -24,22 +27,21 @@ function Trunks({ trunks, height, fill, mark, line, leaves, first }: { trunks: T
         // The trunk nearest the headline can be lighter, so the headline stays clear of it.
         const trunkFill = i === 0 && first ? first.fill : fill;
         const markFill = i === 0 && first ? first.mark : mark;
-        const lean = t.lean;
         const clipId = `tk-${t.x}-${Math.round(t.w * 10)}`;
         // Trunks run far above the frame so they always leave through the top of the hero.
-        const points = `${t.x},${height + 10} ${t.x + t.w},${height + 10} ${t.x + t.w / 2 + top / 2 + lean},-810 ${t.x + t.w / 2 - top / 2 + lean},-810`;
+        const points = `${t.x},${height + 10} ${t.x + t.w},${height + 10} ${t.x + t.w / 2 + top / 2 + t.lean},-810 ${t.x + t.w / 2 - top / 2 + t.lean},-810`;
         return (
           <g key={i}>
             <clipPath id={clipId}><polygon points={points} /></clipPath>
-            <polygon points={points} fill={trunkFill} stroke={line} strokeWidth={line ? 1.2 : 0} style={{ transition: 'fill 0.8s ease' }} />
+            <polygon points={points} fill={trunkFill} stroke={line} strokeWidth={line ? 1.2 : 0} style={FADE} />
             <g clipPath={`url(#${clipId})`}>
               {t.marks.map((m, k) => {
-                const shift = (lean * (height - m.y)) / (height + 810);
+                const shift = (t.lean * (height - m.y)) / (height + 810);
                 const narrow = 1 - ((height - m.y) / (height + 810)) * 0.45;
-                return <rect key={k} x={t.x + t.w / 2 + shift - (t.w * narrow) / 2 + m.dx * t.w * narrow * 0.7} y={m.y} width={m.w * t.w * narrow} height={m.h} rx={m.h / 2} fill={markFill} style={{ transition: 'fill 0.8s ease' }} />;
+                return <rect key={k} x={t.x + t.w / 2 + shift - (t.w * narrow) / 2 + m.dx * t.w * narrow * 0.7} y={m.y} width={m.w * t.w * narrow} height={m.h} rx={m.h / 2} fill={markFill} style={FADE} />;
               })}
             </g>
-            {leaves && <Branch x={t.x + t.w / 2 + lean * 0.45} y={height * 0.3} flip={i % 2 === 1} seed={i * 13 + 5} />}
+            {leaves && <Branch x={t.x + t.w / 2 + t.lean * 0.45} y={height * 0.3} flip={i % 2 === 1} seed={i * 13 + 5} />}
           </g>
         );
       })}
@@ -56,7 +58,7 @@ function Branch({ x, y, flip, seed }: { x: number; y: number; flip: boolean; see
   return (
     <g className="sway">
       <path d={`M${x} ${y} Q ${x + sign * 55} ${y - 18} ${x + sign * 125} ${y - 66}`} fill="none" stroke="var(--branch)" strokeWidth={3} strokeLinecap="round" />
-      {leaves.map((l, i) => <ellipse key={i} cx={l.x} cy={l.y} rx={10} ry={5} transform={`rotate(${l.rot} ${l.x} ${l.y})`} fill={l.gold ? 'var(--leaf-2)' : 'var(--leaf)'} style={{ transition: 'fill 0.8s ease' }} />)}
+      {leaves.map((l, i) => <ellipse key={i} cx={l.x} cy={l.y} rx={10} ry={5} transform={`rotate(${l.rot} ${l.x} ${l.y})`} fill={l.gold ? 'var(--leaf-2)' : 'var(--leaf)'} style={FADE} />)}
     </g>
   );
 }
@@ -157,19 +159,19 @@ export function HeroScene() {
       <div className="hero-layer h-[64%]" data-depth="0.24">
         <svg viewBox="0 0 1600 520" preserveAspectRatio="xMaxYMax slice">
           <Trunks trunks={back} height={520} fill="var(--trunk-b)" mark="var(--mark-b)" />
-          <path d="M0 420 C 300 340 520 450 820 390 S 1320 330 1600 400 V 530 H 0 Z" fill="var(--hill-1)" style={{ transition: 'fill 0.8s ease' }} />
+          <path d="M0 420 C 300 340 520 450 820 390 S 1320 330 1600 400 V 530 H 0 Z" fill="var(--hill-1)" style={FADE} />
         </svg>
       </div>
       <div className="hero-layer h-[74%]" data-depth="0.14">
         <svg viewBox="0 0 1600 620" preserveAspectRatio="xMaxYMax slice">
           <Trunks trunks={mid} height={620} fill="var(--trunk-m)" mark="var(--mark-m)" line="var(--trunk-line)" first={{ fill: 'var(--trunk-s)', mark: 'var(--mark)' }} />
-          <path d="M0 560 C 380 480 640 590 960 530 S 1400 480 1600 540 V 630 H 0 Z" fill="var(--hill-2)" style={{ transition: 'fill 0.8s ease' }} />
+          <path d="M0 560 C 380 480 640 590 960 530 S 1400 480 1600 540 V 630 H 0 Z" fill="var(--hill-2)" style={FADE} />
         </svg>
       </div>
       <div className="hero-layer h-[92%]" data-depth="0.05">
         <svg viewBox="0 0 1600 760" preserveAspectRatio="xMaxYMax slice">
           <Trunks trunks={front} height={760} fill="var(--trunk-f)" mark="var(--mark)" line="var(--trunk-line)" leaves />
-          <path d="M0 720 C 420 670 800 750 1100 700 S 1500 680 1600 710 V 770 H 0 Z" fill="var(--hill-3)" style={{ transition: 'fill 0.8s ease' }} />
+          <path d="M0 720 C 420 670 800 750 1100 700 S 1500 680 1600 710 V 770 H 0 Z" fill="var(--hill-3)" style={FADE} />
         </svg>
       </div>
     </div>

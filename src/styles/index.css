@@ -20,7 +20,7 @@
   --trunk-b: #bcd8d6; --trunk-m: #3f8784; --trunk-s: #8fc0be; --mark-m: #f6f3ef; --trunk-f: #fdfcfa; --trunk-line: rgb(25 32 19 / 0.25);
   --mark: #192013; --mark-b: #86b4b2; --leaf: #8fa67a; --leaf-2: #d4962b; --branch: #6b6f65;
   --stage-1: #f6f3ef; --stage-2: #ece7df; --stage-glow: rgb(92 163 161 / 0.22); --sec: #ece7df;
-  --particle: 169 120 35; --tree-trunk: #fdfcfa; --soil: #d3ccbf; --root: #a97823;
+  --tree-trunk: #fdfcfa; --soil: #d3ccbf; --root: #a97823;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
@@ -38,7 +38,7 @@
     --trunk-b: #1d2e2c; --trunk-m: #2f5856; --trunk-s: #2f5856; --mark-m: #100e09; --trunk-f: #e5ecdf; --trunk-line: rgb(229 236 223 / 0.18);
     --mark: #100e09; --mark-b: #142220; --leaf: #7e9e61; --leaf-2: #a97823; --branch: #6b6f65;
     --stage-1: #100e09; --stage-2: #201b13; --stage-glow: rgb(92 163 161 / 0.16); --sec: #17140e;
-    --particle: 212 150 43; --tree-trunk: #e5ecdf; --soil: #201b13; --root: #a97823;
+    --tree-trunk: #e5ecdf; --soil: #201b13; --root: #a97823;
     color-scheme: dark;
   }
 }
@@ -57,26 +57,20 @@
   --trunk-b: #1d2e2c; --trunk-m: #2f5856; --trunk-s: #2f5856; --mark-m: #100e09; --trunk-f: #e5ecdf; --trunk-line: rgb(229 236 223 / 0.18);
   --mark: #100e09; --mark-b: #142220; --leaf: #7e9e61; --leaf-2: #a97823; --branch: #6b6f65;
   --stage-1: #100e09; --stage-2: #201b13; --stage-glow: rgb(92 163 161 / 0.16); --sec: #17140e;
-  --particle: 212 150 43; --tree-trunk: #e5ecdf; --soil: #201b13; --root: #a97823;
+  --tree-trunk: #e5ecdf; --soil: #201b13; --root: #a97823;
   color-scheme: dark;
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
-  --color-raised: var(--raised);
   --color-beige: var(--beige);
-  --color-sand: var(--sand);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-accent: var(--accent);
   --color-line: var(--line);
-  --color-btn: var(--btn);
-  --color-btn-fg: var(--btn-fg);
   --color-band: var(--band);
-  --color-band-fg: var(--band-fg);
   --color-band-2: var(--band-2);
-  --color-band-line: var(--band-line);
   --color-num: var(--num);
   --color-sec: var(--sec);
   --font-display: 'Gloock', 'Playfair Display', Georgia, serif;
@@ -150,9 +144,11 @@ html body {
   .hero-layer { position: absolute; left: 0; right: 0; bottom: -2px; will-change: transform; pointer-events: none; }
   .hero-layer svg { display: block; width: 100%; height: 100%; overflow: visible; }
   .celestial { position: absolute; right: 11%; top: 9%; width: clamp(180px, 19vw, 300px); aspect-ratio: 1; will-change: transform; pointer-events: none; }
-  @media (max-width: 1023px) { .celestial { right: 14%; top: auto; bottom: 170px; width: 150px; }
+  @media (max-width: 1023px) {
+    .celestial { right: 14%; top: auto; bottom: 170px; width: 150px; }
     .hero-layer { height: 390px !important; -webkit-mask-image: linear-gradient(transparent, #000 34%); mask-image: linear-gradient(transparent, #000 34%); }
-    .hero-layer svg { overflow: hidden; } }
+    .hero-layer svg { overflow: hidden; }
+  }
   .sun, .moon { position: absolute; inset: 0; border-radius: 50%; transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1); }
   .sun { opacity: var(--sun-o); transform: translateY(var(--sun-y)); background: radial-gradient(circle, #fff7e6 0%, #f3d7a2 55%, #e4b25c 100%); box-shadow: 0 0 110px 60px var(--glow); }
   .moon { opacity: var(--moon-o); transform: translateY(var(--moon-y)); background: radial-gradient(circle at 38% 36%, #f7faf3 0%, #e5ecdf 55%, #c3cbbb 100%); box-shadow: 0 0 120px 44px var(--glow); }
@@ -188,13 +184,12 @@ html body {
   .stat-source { font-size: 0.94rem; color: var(--ink-2); }
   .dotseed { width: 15px; height: 15px; border-radius: 50%; background: var(--bar); transform: scale(0); transition: transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1); }
   .dotseed.alt { background: transparent; border: 2.5px solid var(--bar); }
-  .in .dotseed, .dot-in .dotseed { transform: scale(1); }
+  .dot-in .dotseed { transform: scale(1); }
   .grow-bar { height: 10px; border-radius: 0 5px 5px 0; background: var(--bar); transform: scaleX(0); transform-origin: left; transition: transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .dot-in .grow-bar { transform: scaleX(1); }
   .gauge { transition: stroke-dashoffset 1.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .wave-bar { width: 6px; border-radius: 3px; background: var(--bar); transform: scaleY(0.2); transform-origin: bottom; transition: transform 0.9s cubic-bezier(0.3, 1.3, 0.5, 1); }
   .dot-in .wave-bar { transform: scaleY(1); }
-
 }
 
 .skip { position: absolute; left: 12px; top: -80px; z-index: 100; background: var(--btn); color: var(--btn-fg); padding: 10px 18px; border-radius: 999px; }
@@ -202,15 +197,11 @@ html body {
 
 .ring-grow { animation: ring-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-box: view-box; transform-origin: center; }
 .ring-new { animation: ring-add 0.6s ease-out both; transform-box: view-box; transform-origin: center; }
-.ring-spin { animation: spin 260s linear infinite; transform-origin: center; }
-.ring-ripple { animation: ripple 7s ease-out infinite; transform-origin: center; transform-box: fill-box; }
 .sway { animation: sway 7s ease-in-out infinite alternate; transform-origin: 50% 100%; transform-box: fill-box; }
 .rise { animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
 @keyframes ring-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 @keyframes ring-add { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes ripple { 0% { opacity: 0; transform: scale(0.22); } 12% { opacity: 0.7; } 100% { opacity: 0; transform: scale(1); } }
 @keyframes sway { from { transform: rotate(-1.4deg); } to { transform: rotate(1.4deg); } }
 @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes panel-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
@@ -219,5 +210,4 @@ html body {
 @media (prefers-reduced-motion: reduce) {
   html:root { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
-  .ring-ripple { display: none; }
 }
